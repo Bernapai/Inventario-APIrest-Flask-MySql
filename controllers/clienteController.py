@@ -15,7 +15,7 @@ class ClienteController:
                 cliente = ClienteServices.agregar_cliente(data['nombre'], data['telefono'], data['email'], data.get('direccion'))
                 # Retornamos la respuesta serializada
                 return jsonify(cliente.serialize()), 201
-        except Exception as e:
+       except Exception as e:
             return jsonify({'error': str(e)}), 500
             
     @staticmethod
