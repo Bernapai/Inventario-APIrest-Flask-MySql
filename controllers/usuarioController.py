@@ -8,12 +8,12 @@ class UsuarioController:
         try:
              # Obtener los datos del cuerpo de la solicitud
             # Validación de los campos obligatorios
-            if not data or 'nombre_usuario' not in data or 'contraseña' not in data or 'rol' not in data:
+            if not data or 'nombre_usuario' not in data or 'contrasena' not in data or 'rol' not in data:
                 return jsonify({'error': 'Datos incompletos'}), 400
             # Llamar al servicio para agregar el nuevo usuario
             nuevo_usuario = UsuarioServices.agregar_usuario(
                 data['nombre_usuario'],   # Extraemos los datos correctamente
-                data['contraseña'],
+                data['contrasena'],
                 data['rol']
             )
             return jsonify(nuevo_usuario.serialize()), 201  # Retornar el usuario agregado en formato JSON
@@ -31,7 +31,7 @@ class UsuarioController:
             usuario_actualizado = UsuarioServices.actualizar_usuario(
                 id_usuario,
                 data.get('nombre_usuario'),
-                data.get('contraseña'),
+                data.get('contrasena'),
                 data.get('rol')
             )
             # Si no se encuentra el usuario, retornamos un error

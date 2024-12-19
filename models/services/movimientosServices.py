@@ -8,8 +8,8 @@ class MovimientosServices:
 
     # Método para agregar un nuevo movimiento
     @staticmethod
-    def agregar_movimiento(id_producto, cantidad, tipo_movimiento, usuario):
-        nuevo_movimiento = Movimiento(id_producto, cantidad, tipo_movimiento, usuario)
+    def agregar_movimiento(id_producto, cantidad, tipo_movimiento,fecha, usuario):
+        nuevo_movimiento = Movimiento(id_producto, cantidad, tipo_movimiento,fecha, usuario)
         db.session.add(nuevo_movimiento)
         db.session.commit()
         return nuevo_movimiento  

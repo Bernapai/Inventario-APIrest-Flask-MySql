@@ -8,21 +8,21 @@ class UsuarioServices:
 
     # Método para agregar un nuevo usuario
     @staticmethod
-    def agregar_usuario(nombre_usuario, contraseña, rol):
-        nuevo_usuario = Usuario(nombre_usuario, contraseña, rol)
+    def agregar_usuario(nombre_usuario, contrasena, rol):
+        nuevo_usuario = Usuario(nombre_usuario, contrasena, rol)
         db.session.add(nuevo_usuario)
         db.session.commit()
         return nuevo_usuario  
 
     # Método para actualizar un usuario
     @staticmethod
-    def actualizar_usuario(id_usuario, nombre_usuario=None, contraseña=None, rol=None):
+    def actualizar_usuario(id_usuario, nombre_usuario=None, contrasena=None, rol=None):
         usuario = Usuario.query.get(id_usuario)
         if usuario:
             if nombre_usuario:
                 usuario.nombre_usuario = nombre_usuario
-            if contraseña:
-                usuario.contraseña = contraseña
+            if contrasena:
+                usuario.contrasena = contrasena
             if rol:
                 usuario.rol = rol
             db.session.commit()

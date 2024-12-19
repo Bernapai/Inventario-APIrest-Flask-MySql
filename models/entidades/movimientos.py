@@ -15,10 +15,11 @@ class Movimiento(db.Model):
 
 
 
-    def __init__(self, id_producto, cantidad, tipo_movimiento, usuario):
+    def __init__(self, id_producto, cantidad, tipo_movimiento,fecha, usuario):
         self.id_producto = id_producto
         self.cantidad = cantidad
         self.tipo_movimiento = tipo_movimiento
+        self.fecha = fecha
         self.usuario = usuario
 
     def serialize(self):

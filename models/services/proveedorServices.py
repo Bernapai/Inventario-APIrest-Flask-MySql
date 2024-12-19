@@ -49,7 +49,7 @@ class ProveedorServices:
 
     # Método para obtener un proveedor por ID
     @staticmethod
-    def obtener_proveedor_por_id(id_proveedor):
+    def obtener_proveedor(id_proveedor):
         return Proveedor.query.get(id_proveedor) 
 
     # Método para obtener un proveedor por nombre

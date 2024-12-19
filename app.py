@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_jwt_extended import JWTManager
 from config import Config, db
 from routes.categoriaRoute import categoria_bp
 from routes.clienteRoute import cliente_bp
@@ -19,6 +20,10 @@ app.config.from_object(Config)
 
 # Asociar la aplicación con la instancia de db
 db.init_app(app)
+
+# Inicializar JWT
+jwt.init_app(app)
+
 
 # Registro de Blueprints
 app.register_blueprint(categoria_bp)

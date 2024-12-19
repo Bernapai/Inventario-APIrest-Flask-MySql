@@ -5,16 +5,16 @@ class MovimientosController:
     @staticmethod
     def agregar_movimiento(data):
         try:
-         
             # Validación básica de los datos
-            if not data or 'id_producto' not in data or 'cantidad' not in data or 'tipo_movimiento' not in data or 'usuario' not in data:
+            if not data or 'id_producto' not in data or 'cantidad' not in data or 'tipo_movimiento' not in data or 'usuario' not in data or 'fecha' not in data:
                 return jsonify({'error': 'Datos incompletos'}), 400
             
             # Llamar al servicio para agregar el movimiento
-            nuevo_movimiento = MovimientoServices.agregar_movimiento(
+            nuevo_movimiento = MovimientosServices.agregar_movimiento(
                 data['id_producto'], 
                 data['cantidad'], 
                 data['tipo_movimiento'], 
+                data['fecha'],
                 data['usuario']
             )
             return jsonify(nuevo_movimiento.serialize()), 201
@@ -25,7 +25,7 @@ class MovimientosController:
     def obtener_todos_movimientos():
         try:
             # Llamar al servicio para obtener todos los movimientos
-            movimientos = MovimientoServices.obtener_todos_movimientos()
+            movimientos = MovimientosServices.obtener_todos_movimientos()
             # Retornar los movimientos serializados
             return jsonify([movimiento.serialize() for movimiento in movimientos]), 200
         except Exception as e:

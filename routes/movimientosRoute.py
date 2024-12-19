@@ -6,7 +6,7 @@ movimientos_bp = Blueprint('movimientos_bp', __name__)
 # Ruta para obtener todos los movimientos
 @movimientos_bp.route('/movimientos', methods=['GET'])
 def obtener_movimientos():
-    return MovimientoController.obtener_todos_movimientos()
+    return MovimientosController.obtener_todos_movimientos()
 
 # Ruta para obtener un movimiento por id
 @movimientos_bp.route('/movimiento/<int:id_movimiento>', methods=['GET'])

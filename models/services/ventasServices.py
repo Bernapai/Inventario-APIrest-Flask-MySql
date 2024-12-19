@@ -10,14 +10,12 @@ class VentasServices:
         nueva_venta = Ventas(id_cliente=id_cliente, fecha=fecha, total=total, usuario=usuario)
         db.session.add(nueva_venta)
         db.session.commit()
-        return nueva_venta.serialize()
+        return nueva_venta
 
     @staticmethod
     def obtener_venta_por_id(venta_id):
-        venta = Ventas.query.get(venta_id)
-        if not venta:
-            return None
-        return venta.serialize()
+        return Ventas.query.get(venta_id)
+       
 
     @staticmethod
     def actualizar_venta(venta_id, id_cliente=None, fecha=None, total=None, usuario=None):
@@ -47,7 +45,9 @@ class VentasServices:
         return True
 
     @staticmethod
-    def listar_ventas():
-        ventas = Ventas.query.all()
-        return [venta.serialize() for venta in ventas]
+    def obtener_todas_ventas():
+       return Ventas.query.all()
+
+    
+
 
