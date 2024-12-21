@@ -23,23 +23,20 @@ class UsuarioController:
     @staticmethod
     def actualizar_usuario(id_usuario):
         try:
+
+        nombre_usuario = data.get('nombre_usuario')
+        contrasena = data.get('contrasena')
+        rol = data.get('rol')
+
+        # Llamar al servicio para actualizar el usuario
+        usuario_actualizado = UsuarioServices.actualizar_usuario(
+            id_usuario, nombre_usuario = nombre_usuario contrasena = contrasena, rol = rol)
+        if usuario_actualizado:
+            return jsonify(usuario_actualizado.serialize()), 200
+        else:
+            return jsonify({'error': 'Usuario no encontrado'}), 404
            
-            # Validación de los campos opcionales que pueden ser actualizados
-            if not data:
-                return jsonify({'error': 'Datos vacíos'}), 400
-            # Llamar al servicio para actualizar el usuario
-            usuario_actualizado = UsuarioServices.actualizar_usuario(
-                id_usuario,
-                data.get('nombre_usuario'),
-                data.get('contrasena'),
-                data.get('rol')
-            )
-            # Si no se encuentra el usuario, retornamos un error
-            if not usuario_actualizado:
-                return jsonify({'error': 'Usuario no encontrado'}), 404
-            return jsonify(usuario_actualizado.serialize()), 200  # Retornar el usuario actualizado
-        except Exception as e:
-            return jsonify({'error': str(e)}), 500
+          
 
     @staticmethod
     def eliminar_usuario(id_usuario):

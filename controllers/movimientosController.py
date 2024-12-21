@@ -44,24 +44,16 @@ class MovimientosController:
             return jsonify({'error': str(e)}), 500
 
     @staticmethod
-    def actualizar_movimiento(id_movimiento):
+    def actualizar_movimiento(id_movimiento,data):
         try:
-            data = request.get_json()
+            cantidad = data.get('cantidad')
+            tipo_movimiento = data.get('tipo_movimiento')
+            usuario = data.get('usuario')
             # Validación de datos
-            if not data:
-                return jsonify({'error': 'Datos incompletos'}), 400
-            
-            # Llamar al servicio para actualizar el movimiento
-            movimiento_actualizado = MovimientoServices.actualizar_movimiento(
-                id_movimiento,
-                data.get('cantidad'),
-                data.get('tipo_movimiento'),
-                data.get('usuario')
-            )
-            
-            return jsonify(movimiento_actualizado.serialize()), 200
-        except Exception as e:
-            return jsonify({'error': str(e)}), 500
+            movimiento = MovimientoServices.actualizar_movimiento(id_movimiento, cantidad=cantidad, tipo_movimiento=tipo_movimiento, usuario=usuario)
+            if movimiento is None:
+                return jsonify({'message': 'Movimiento no encontrado'}), 404
+            return jsonify(movimiento.serialize()), 200
 
     @staticmethod
     def eliminar_movimiento(id_movimiento):

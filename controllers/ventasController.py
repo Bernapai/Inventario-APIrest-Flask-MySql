@@ -23,22 +23,19 @@ class VentasController:
     @staticmethod
     def actualizar_venta(id_venta):
         try:
-          # Obtener los datos del cuerpo de la solicitud
-            if not data:
-                return jsonify({'error': 'Datos vacíos'}), 400
+            id_cliente = data.get('id_cliente')
+            fecha = data.get('fecha')
+            total = data.get('total')
+            usuario = data.get('usuario')
+
             # Llamar al servicio para actualizar la venta
-            venta_actualizada = VentasServices.actualizar_venta(
-                id_venta,
-                id_cliente=data.get('id_cliente'),
-                fecha=data.get('fecha'),
-                total=data.get('total'),
-                usuario=data.get('usuario')
-            )
+            venta_actualizada = VentasServices.actualizar_venta(  id_venta = id_venta, id_cliente = id_cliente, fecha = fecha, total = total, usuario = usuario)
+            
             if not venta_actualizada:
                 return jsonify({'error': 'Venta no encontrada'}), 404
-            return jsonify(venta_actualizada.serialize()), 200
-        except Exception as e:
-            return jsonify({'error': str(e)}), 500
+            else :
+                return jsonify(venta_actualizada), 200
+            
 
     @staticmethod
     def eliminar_venta(id_venta):

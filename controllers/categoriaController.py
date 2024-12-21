@@ -25,7 +25,7 @@ class CategoriaController:
         descripcion = data.get('descripcion')
 
         # Llamamos al servicio para actualizar la categoría
-        categoria = CategoriaServices.actualizar_categoria(id_categoria, nombre, descripcion)
+        categoria = CategoriaServices.actualizar_categoria(id_categoria, nombre=nombre, descripcion = descripcion)
         
         if categoria is None:
             return jsonify({'mensaje': 'Categoría no encontrada'}), 404

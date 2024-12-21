@@ -25,24 +25,19 @@ class ProveedorController:
     @staticmethod
     def actualizar_proveedor(id_proveedor):
         try:
-            
-            # Validación de los campos opcionales que pueden ser actualizados
-            if not data:
-                return jsonify({'error': 'Datos vacíos'}), 400
-            # Llamar al servicio para actualizar el proveedor
-            proveedor_actualizado = ProveedorServices.actualizar_proveedor(
-                id_proveedor,
-                data.get('nombre'),
-                data.get('telefono'),
-                data.get('email'),
-                data.get('direccion')
-            )
-            # Si no se encuentra el proveedor, retornamos un error
-            if not proveedor_actualizado:
-                return jsonify({'error': 'Proveedor no encontrado'}), 404
-            return jsonify(proveedor_actualizado.serialize()), 200  # Retornar el proveedor actualizado
-        except Exception as e:
-            return jsonify({'error': str(e)}), 500
+           nombre = data.get('nombre')
+           telefono = data.get('telefono')
+           email = data.get('email')
+           direccion = data.get('direccion') 
+
+           proveedor_actualizado = ProveedorServices.actualizar_proveedor(id_proveedor, nombre = nombre, telefono= telefono, email = email, direccion = direccion)
+
+           if proveedor_actualizado is None:
+               return jsonify({'error': 'Proveedor no encontrado'}), 404
+            else:
+                return jsonify(proveedor_actualizado.serialize()), 200
+                
+           
 
     @staticmethod
     def eliminar_proveedor(id_proveedor):

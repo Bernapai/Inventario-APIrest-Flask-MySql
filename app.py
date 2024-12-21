@@ -22,7 +22,7 @@ app.config.from_object(Config)
 db.init_app(app)
 
 # Inicializar JWT
-jwt.init_app(app)
+#jwt.init_app(app)
 
 
 # Registro de Blueprints

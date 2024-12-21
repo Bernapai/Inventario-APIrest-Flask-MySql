@@ -27,7 +27,7 @@ class ClienteController:
         direccion = data.get('direccion')
 
         # Llamamos al servicio para actualizar el cliente
-        cliente = ClienteServices.actualizar_cliente(id_cliente, nombre, telefono, email, direccion)
+        cliente = ClienteServices.actualizar_cliente(id_cliente,  telefono=telefono, direccion=direccion, email=email)
         
         if cliente is None:
             return jsonify({'mensaje': 'Cliente no encontrado'}), 404

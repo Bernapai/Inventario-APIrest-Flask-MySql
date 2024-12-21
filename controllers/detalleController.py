@@ -27,7 +27,7 @@ class DetalleController:
         precio_unitario = data.get('precio_unitario')
 
         # Llamamos al servicio para actualizar el detalle
-        detalle = DetalleServices.actualizar_detalle(id_detalle, cantidad, precio_unitario)
+        detalle = DetalleServices.actualizar_detalle(id_detalle, cantidad = cantidad, precio_unitario = precio_unitario)
         
         if detalle is None:
             return jsonify({'mensaje': 'Detalle no encontrado'}), 404

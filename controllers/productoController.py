@@ -26,31 +26,19 @@ class ProductoController:
     @staticmethod
     def actualizar_producto(id_producto):
         try:
-           
-            # Validación de los campos opcionales que pueden ser actualizados
-            if not data:
-                return jsonify({'error': 'Datos vacíos'}), 400
+           nombre = data.get('nombre')
+            descripcion = data.get('descripcion')
+            precio = data.get('precio')
+            stock_actual = data.get('stock_actual')
+            categoria_id = data.get('categoria_id')
+            proveedor_id = data.get('proveedor_id')
 
-            # Llamar al servicio para actualizar el producto
-            producto_actualizado = ProductoServices.actualizar_producto(
-                id_producto,
-                data.get('nombre'),
-                data.get('descripcion'),
-                data.get('precio'),
-                data.get('stock_actual'),
-                data.get('categoria_id'),
-                data.get('proveedor_id')
-            )
-
-            # Si no se encuentra el producto, retornamos un error
-            if not producto_actualizado:
+            producto_actualizado = ProductoServices.actualizar_producto(id_producto, nombre = nombre , descripcion = descripcion, precio = precio, stock_actual = stock_actual, categoria_id = categoria_id, proveedor_id = proveedor_id)
+            if producto_actualizado is None:
                 return jsonify({'error': 'Producto no encontrado'}), 404
-
-            return jsonify(producto_actualizado.serialize()), 200  # Retornar el producto actualizado
-
-        except Exception as e:
-            return jsonify({'error': str(e)}), 500
-
+            else:
+                return jsonify(producto_actualizado.serialize()), 200
+           
     @staticmethod
     def eliminar_producto(id_producto):
         try:
