@@ -15,6 +15,11 @@ def obtener_productos():
 def obtener_producto(id_producto):
     return ProductoController.obtener_producto(id_producto)
 
+# Ruta para buscar un producto por nombre
+@producto_bp.route('/productos/<string:nombre>', methods=['GET'])
+def buscar_producto(nombre):
+    return ProductoController.buscar_producto(nombre)
+    
 # Ruta para agregar un nuevo producto
 @producto_bp.route('/producto', methods=['POST'])
 def agregar_producto():

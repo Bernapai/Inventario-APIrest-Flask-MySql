@@ -15,6 +15,11 @@ def obtener_categorias():
 def obtener_categoria(id_categoria):
     return CategoriaController.obtener_categoria_por_id(id_categoria)
 
+#Ruta para obtener una categoria por nombre
+@categoria_bp.route('/categoria/nombre/<string:nombre>', methods=['GET'])
+def obtener_categoria_por_nombre(nombre):
+    return CategoriaController.obtener_categoria_por_nombre(nombre)
+
 # Ruta para agregar una nueva categoría
 @categoria_bp.route('/categoria', methods=['POST'])
 def agregar_categoria():

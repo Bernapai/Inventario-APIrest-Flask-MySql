@@ -50,12 +50,4 @@ class MovimientosServices:
     def obtener_movimientos_por_id_producto(id_producto):
         return Movimiento.query.filter_by(id_producto=id_producto).all()  
 
-    # Método para obtener movimientos por fecha
-    @staticmethod
-    def obtener_movimientos_por_fecha(fecha):
-        return Movimiento.query.filter_by(fecha=fecha).all()  
 
-    # Método para obtener movimientos por usuario
-    @staticmethod
-    def obtener_movimientos_por_usuario(usuario):
-        return Movimiento.query.filter_by(usuario=usuario).all()  

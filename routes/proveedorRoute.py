@@ -13,6 +13,11 @@ def obtener_proveedores():
 def obtener_proveedor(id_proveedor):
     return ProveedorController.obtener_proveedor(id_proveedor)
 
+# Ruta para buscar un proveedor por nombre
+@proveedor_bp.route('/proveedores/<string:nombre>', methods=['GET'])
+def buscar_proveedor(nombre):
+    return ProveedorController.buscar_proveedor(nombre)
+
 # Ruta para agregar un nuevo proveedor
 @proveedor_bp.route('/proveedor', methods=['POST'])
 def agregar_proveedor():

@@ -16,6 +16,12 @@ def obtener_usuarios():
 def obtener_usuario(id_usuario):
     return UsuarioController.obtener_usuario(id_usuario)
 
+# Ruta para buscar un usuario por nombre
+@usuario_bp.route('/usuarios/<string:nombre>', methods=['GET'])
+def buscar_usuario(nombre):
+    return UsuarioController.buscar_usuario(nombre)
+    
+
 # Ruta para agregar un nuevo usuario
 @usuario_bp.route('/usuario', methods=['POST'])
 def agregar_usuario():

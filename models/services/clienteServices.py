@@ -54,16 +54,7 @@ class ClienteServices:
     @staticmethod
     def obtener_cliente_por_telefono(telefono):
         return Cliente.query.filter_by(telefono=telefono).first()
-    
-    # Método para obtener un cliente por email
-    @staticmethod
-    def obtener_cliente_por_email(email):
-        return Cliente.query.filter_by(email=email).first()
-
-    # Método para obtener un cliente por dirección
-    @staticmethod
-    def obtener_cliente_por_direccion(direccion):
-        return Cliente.query.filter_by(direccion=direccion).first()
+  
 
     # Método para buscar clientes por nombre
     @staticmethod

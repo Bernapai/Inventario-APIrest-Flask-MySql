@@ -14,6 +14,17 @@ def obtener_clientes():
 def obtener_cliente(id_cliente):
     return ClienteController.obtener_cliente_por_id(id_cliente)
 
+# Ruta para buscar un cliente por nombre
+@cliente_bp.route('/clientes/<string:nombre>', methods=['GET'])
+def buscar_cliente(nombre):
+    return ClienteController.buscar_cliente_por_nombre(nombre)
+
+# Ruta para obtener un cliente por teléfono
+@cliente_bp.route('/cliente/telefono/<string:telefono>', methods=['GET'])
+def obtener_cliente_por_telefono(telefono):
+    return ClienteController.obtener_cliente_por_telefono(telefono)
+    
+
 # Ruta para agregar un nuevo cliente
 @cliente_bp.route('/cliente', methods=['POST'])
 def agregar_cliente():

@@ -66,22 +66,7 @@ class ClienteController:
             return jsonify({'mensaje': 'Cliente no encontrado'}), 404
         return jsonify(cliente.serialize()), 200
     
-    @staticmethod
-    def obtener_cliente_por_email(email):
-        # Llamamos al servicio para obtener un cliente por email
-        cliente = ClienteServices.obtener_cliente_por_email(email)
-        if cliente is None:
-            return jsonify({'mensaje': 'Cliente no encontrado'}), 404
-        return jsonify(cliente.serialize()), 200
-
-    @staticmethod
-    def obtener_cliente_por_direccion(direccion):
-        # Llamamos al servicio para obtener un cliente por dirección
-        cliente = ClienteServices.obtener_cliente_por_direccion(direccion)
-        if cliente is None:
-            return jsonify({'mensaje': 'Cliente no encontrado'}), 404
-        return jsonify(cliente.serialize()), 200
-
+ 
     @staticmethod
     def buscar_cliente_por_nombre(nombre):
         # Llamamos al servicio para obtener los clientes que coinciden con el nombre
