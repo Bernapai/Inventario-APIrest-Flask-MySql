@@ -58,12 +58,3 @@ El sistema está basado en una base de datos relacional con las siguientes tabla
 
 ---
 
-## 📥 Instalación
-
-### 1. Clonar el repositorio
-
-Para obtener el código fuente, clona el repositorio:
-
-```bash
-git clone https://github.com/tu_usuario/gestor_inventarios.git
-cd gestor_inventarios
