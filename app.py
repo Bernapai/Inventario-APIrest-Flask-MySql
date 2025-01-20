@@ -10,7 +10,7 @@ from routes.productoRoute import producto_bp
 from routes.proveedorRoute import proveedor_bp
 from routes.usuarioRoute import usuario_bp
 from routes.ventasRoute import ventas_bp
-
+from routes.authJwtRoute import auth_bp
 # Crear la aplicación de Flask
 app = Flask(__name__)
 
@@ -34,6 +34,7 @@ app.register_blueprint(producto_bp)
 app.register_blueprint(proveedor_bp)
 app.register_blueprint(usuario_bp)
 app.register_blueprint(ventas_bp)
+app.register_blueprint(auth_bp)
 
 # Iniciar la aplicación Flask
 if __name__ == '__main__':

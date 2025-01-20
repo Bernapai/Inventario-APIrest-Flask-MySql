@@ -12,7 +12,7 @@ El sistema está basado en una base de datos relacional con las siguientes tabla
 - **Movimientos**: Registra las entradas y salidas de productos en el inventario, como compras, devoluciones, ajustes, entre otros. ↔️
 - **Ventas**: Registra las ventas realizadas, incluyendo detalles sobre el cliente, productos vendidos y fecha de la transacción. 💸
 - **Clientes**: Almacena la información de los clientes que han realizado compras en el sistema, como nombre, dirección, teléfono y correo electrónico. 🧑‍🤝‍🧑
-- **Usuarios**: Permite la gestión de usuarios que tienen acceso al sistema, con roles definidos para administrar el inventario y las ventas. 👤
+- **Usuarios**: Permite la gestión de usuarios que tienen acceso al sistema, mediante autenticacion por token para administrar el inventario y las ventas. 👤
 - **Detalle de Venta**: Relaciona los productos vendidos en cada venta, permitiendo un desglose detallado de las transacciones. 🧾
 
 ## ⚙️ Funcionalidades
@@ -38,7 +38,7 @@ El sistema está basado en una base de datos relacional con las siguientes tabla
 - **Registrar movimientos** de inventarios (entradas y salidas de productos). 📦🔄
 
 ### Gestión de Usuarios
-- **Crear** y **gestionar usuarios** del sistema con diferentes roles (por ejemplo: administrador, vendedor). 👥🔧
+- **Crear** y **gestionar usuarios** del sistema mediante un Login. 👥🔧
 
 ## 🛠️ Tecnologías Usadas
 
