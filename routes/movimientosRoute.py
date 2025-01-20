@@ -1,5 +1,6 @@
 from flask import Blueprint,  request
 from controllers.movimientosController import MovimientosController
+from routes.authJwtRoute import token_required
 
 movimientos_bp = Blueprint('movimientos_bp', __name__)
 
@@ -15,17 +16,20 @@ def obtener_movimiento(id_movimiento):
 
 # Ruta para agregar un nuevo movimiento
 @movimientos_bp.route('/movimiento', methods=['POST'])
+@token_required
 def agregar_movimiento():
     data = request.get_json()  # Obtenemos los datos del cuerpo de la solicitud
     return MovimientosController.agregar_movimiento(data)
 
 # Ruta para actualizar un movimiento
 @movimientos_bp.route('/movimiento/<int:id_movimiento>', methods=['PUT'])
+@token_required
 def actualizar_movimiento(id_movimiento):
     data = request.get_json()  # Obtenemos los datos del cuerpo de la solicitud
     return MovimientosController.actualizar_movimiento(id_movimiento, data)
 
 # Ruta para eliminar un movimiento
 @movimientos_bp.route('/movimiento/<int:id_movimiento>', methods=['DELETE'])
+@token_required
 def eliminar_movimiento(id_movimiento):
     return MovimientosController.eliminar_movimiento(id_movimiento)

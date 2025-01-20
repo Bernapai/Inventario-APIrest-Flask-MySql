@@ -1,5 +1,6 @@
 from flask import Blueprint,  request
 from controllers.clienteController import ClienteController
+from routes.authJwtRoute import token_required
 
 
 cliente_bp = Blueprint('cliente_bp',__name__ )
@@ -27,17 +28,20 @@ def obtener_cliente_por_telefono(telefono):
 
 # Ruta para agregar un nuevo cliente
 @cliente_bp.route('/cliente', methods=['POST'])
+@token_required
 def agregar_cliente():
     data = request.get_json()  # Obtenemos los datos del cuerpo de la solicitud
     return ClienteController.agregar_cliente(data)
 
 # Ruta para actualizar un cliente
 @cliente_bp.route('/cliente/<int:id_cliente>', methods=['PUT'])
+@token_required
 def actualizar_cliente(id_cliente):
     data = request.get_json()  # Obtenemos los datos del cuerpo de la solicitud
     return ClienteController.actualizar_cliente(id_cliente, data)
 
 # Ruta para eliminar un cliente
 @cliente_bp.route('/cliente/<int:id_cliente>', methods=['DELETE'])
+@token_required
 def eliminar_cliente(id_cliente):
     return ClienteController.eliminar_cliente(id_cliente)

@@ -1,5 +1,6 @@
 from flask import Blueprint, request
 from controllers.ventasController import VentasController
+from routes.authJwtRoute import token_required
 
 # Creamos un Blueprint para las rutas de ventas
 ventas_bp = Blueprint('ventas_bp', __name__)
@@ -16,17 +17,20 @@ def obtener_venta(id_venta):
 
 # Ruta para agregar una nueva venta
 @ventas_bp.route('/ventas', methods=['POST'])
+@token_required
 def agregar_venta():
     data = request.get_json()  # Obtenemos los datos del cuerpo de la solicitud
     return VentasController.agregar_venta(data)
 
 # Ruta para actualizar una venta existente
 @ventas_bp.route('/ventas/<int:id_venta>', methods=['PUT'])
+@token_required
 def actualizar_venta(id_venta):
     data = request.get_json()  # Obtenemos los datos del cuerpo de la solicitud
     return VentasController.actualizar_venta(id_venta, data)
 
 # Ruta para eliminar una venta
 @ventas_bp.route('/ventas/<int:id_venta>', methods=['DELETE'])
+@token_required
 def eliminar_venta(id_venta):
     return VentasController.eliminar_venta(id_venta)

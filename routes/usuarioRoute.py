@@ -1,5 +1,6 @@
 from flask import Blueprint,  request
 from controllers.usuarioController import UsuarioController
+from routes.authJwtRoute import token_required
 
 # Creamos un Blueprint para las rutas de usuario
 
@@ -30,11 +31,13 @@ def agregar_usuario():
 
 # Ruta para actualizar un usuario
 @usuario_bp.route('/usuario/<int:id_usuario>', methods=['PUT'])
+@token_required
 def actualizar_usuario(id_usuario):
     data = request.get_json()  # Obtenemos los datos del cuerpo de la solicitud
     return UsuarioController.actualizar_usuario(id_usuario, data)
 
 # Ruta para eliminar un usuario
 @usuario_bp.route('/usuario/<int:id_usuario>', methods=['DELETE'])
+@token_required
 def eliminar_usuario(id_usuario):
     return UsuarioController.eliminar_usuario(id_usuario)

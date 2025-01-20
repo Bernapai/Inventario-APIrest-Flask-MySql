@@ -1,6 +1,6 @@
 from flask import Blueprint,request
 from controllers.productoController import ProductoController
-
+from routes.authJwtRoute import token_required
 # Creamos un Blueprint para las rutas de productos
 
 producto_bp = Blueprint('producto_bp', __name__)
@@ -22,17 +22,20 @@ def buscar_producto(nombre):
     
 # Ruta para agregar un nuevo producto
 @producto_bp.route('/producto', methods=['POST'])
+@token_required
 def agregar_producto():
     data = request.get_json() 
     return ProductoController.agregar_producto(data)
 
 # Ruta para actualizar un producto
 @producto_bp.route('/producto/<int:id_producto>', methods=['PUT'])
+@token_required
 def actualizar_producto(id_producto):
     data = request.get_json()  # Obtenemos los datos del cuerpo de la solicitud
     return ProductoController.actualizar_producto(id_producto, data)
 
 # Ruta para eliminar un producto
 @producto_bp.route('/producto/<int:id_producto>', methods=['DELETE'])
+@token_required
 def eliminar_producto(id_producto):
     return ProductoController.eliminar_producto(id_producto)
